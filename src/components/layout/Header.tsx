@@ -1,7 +1,12 @@
 import React from 'react';
 import { Menu } from 'lucide-react';
+import { Button } from '../ui/button'; 
+import { useNavigate } from 'react-router-dom'; // 1. Import the hook
+import { APP_ROUTES } from '../../core/routes/routes'; // 2. Import your routes
 
 export default function Header() {
+  const navigate = useNavigate(); // 3. Initialize the hook
+
   return (
     <div className="pt-6 px-4 md:px-8 absolute top-0 left-0 w-full z-50">
       <nav className="relative flex items-center justify-between px-6 md:px-8 py-3 max-w-6xl mx-auto bg-white rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.06)]">
@@ -18,9 +23,12 @@ export default function Header() {
         </div>
 
         <div className="hidden md:flex items-center z-10">
-          <button className="px-8 py-2.5 bg-[#49724B] text-white font-semibold rounded-full hover:bg-[#2B4E31] transition-colors shadow-md shadow-[#49724B]/20">
+          <Button 
+            onClick={() => navigate(APP_ROUTES.AUTH.LOGIN)} 
+            className="px-8 py-5 bg-[#49724B] text-white font-semibold rounded-full hover:bg-[#2B4E31] transition-colors shadow-md shadow-[#49724B]/20"
+          >
             Login
-          </button>
+          </Button>
         </div>
         
         <button className="md:hidden p-2 text-[#132A1A] z-10">

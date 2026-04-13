@@ -1,0 +1,11 @@
+/* Brand Colors */
+:root {
+  --color-text-primary: #132A1A;
+  --color-bg-light: #F8FAF8;
+}
+
+/* Global Theme Class */
+.theme-default {
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-light);
+}

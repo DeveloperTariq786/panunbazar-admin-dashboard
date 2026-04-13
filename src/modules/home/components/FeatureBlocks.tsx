@@ -13,6 +13,14 @@ import {
   Zap
 } from 'lucide-react';
 
+// Import your Radix UI Card components
+import { 
+  Card, 
+  CardHeader, 
+  CardTitle, 
+  CardContent 
+} from '../../../components/ui/card';
+
 export default function FeatureBlocks() {
   return (
     <>
@@ -41,13 +49,18 @@ export default function FeatureBlocks() {
               { icon: TrendingUp, title: "Boost B2B sales", desc: "Robust B2B features ensure you can scale online sales for wholesale and enterprise." },
               { icon: Headphones, title: "Access reliable support", desc: "24x7 live, US-based support solves any ecommerce challenge you might face." }
             ].map((feature, idx) => (
-              <div key={idx} className="group bg-white p-6 rounded-xl border border-[#D5DFCF]/40 shadow-sm hover:shadow-md hover:border-[#A3BA9C] transition-all duration-300 flex flex-col items-start">
-                <div className="w-12 h-12 rounded-lg bg-[#F8FAF8] border border-[#D5DFCF]/60 flex items-center justify-center mb-5 text-[#49724B] group-hover:scale-110 group-hover:bg-[#49724B] group-hover:text-white transition-all duration-300">
-                  <feature.icon className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 text-[#020C04]">{feature.title}</h3>
-                <p className="text-[#132A1A]/70 leading-relaxed">{feature.desc}</p>
-              </div>
+              /* Replaced standard div with Radix Card */
+              <Card key={idx} className="group bg-white border-[#D5DFCF]/40 shadow-sm hover:shadow-md hover:border-[#A3BA9C] transition-all duration-300 flex flex-col items-start border-2">
+                <CardHeader className="pb-2">
+                  <div className="w-12 h-12 rounded-lg bg-[#F8FAF8] border border-[#D5DFCF]/60 flex items-center justify-center mb-3 text-[#49724B] group-hover:scale-110 group-hover:bg-[#49724B] group-hover:text-white transition-all duration-300">
+                    <feature.icon className="w-6 h-6" />
+                  </div>
+                  <CardTitle className="text-xl font-bold text-[#020C04]">{feature.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-[#132A1A]/70 leading-relaxed">{feature.desc}</p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
@@ -100,6 +113,7 @@ export default function FeatureBlocks() {
           <div className="bg-[#F8FAF8] rounded-3xl p-8 md:p-16 grid md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1 relative h-full min-h-[300px]">
               <div className="grid grid-cols-2 gap-4 h-full">
+                {/* Note: I left these smaller stat blocks as divs for layout flexibility but you can convert them to <Card>s too if you prefer */}
                 <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#D5DFCF]/50 flex flex-col justify-center items-center text-center hover:-translate-y-1 transition-transform duration-300">
                    <div className="w-12 h-12 rounded-full bg-[#F8FAF8] flex items-center justify-center mb-3">
                      <Zap className="w-6 h-6 text-[#49724B]" />
